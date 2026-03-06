@@ -10,23 +10,21 @@
         #panorama { width: 100%; height: 100vh; }
         body { margin: 0; }
         
-        /* Özel İkon Tasarımı */
+/* Özel İkon Tasarımı (PNG Görsel ile) */
         .custom-hotspot {
-            height: 30px;
-            width: 30px;
-            background: #fff;
-            border: 2px solid #333;
-            border-radius: 50%;
+            height: 50px; /* İkonun ekrandaki yüksekliği */
+            width: 50px;  /* İkonun ekrandaki genişliği */
+            background-image: url('ok.png'); /* İKON GÖRSELİNİN ADI BURAYA */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            /* box-shadow ve border'ı sildik, ikonun kendi gölgesi varsa daha iyi */
         }
+        
+        /* Eski ok işaretini (:after) kaldırıyoruz */
         .custom-hotspot:after {
-            content: "↑"; /* Ok işareti veya istediğin bir karakter */
-            color: #333;
+            content: none;
         }
     </style>
 </head>
@@ -105,6 +103,7 @@ pannellum.viewer('panorama', {
 
 </body>
 </html>
+
 
 
 
