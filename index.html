@@ -3,12 +3,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3ds Max Sanal Tur</title>
+    <title>360 Sanal Tur Pro</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
         #panorama { width: 100%; height: 100vh; }
         body { margin: 0; }
+        
+        /* Özel İkon Tasarımı */
+        .custom-hotspot {
+            height: 30px;
+            width: 30px;
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .custom-hotspot:after {
+            content: "↑"; /* Ok işareti veya istediğin bir karakter */
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -21,33 +40,29 @@ pannellum.viewer('panorama', {
         "firstScene": "salon",
         "author": "Senin Adın",
         "sceneFadeDuration": 1000,
-        "autoLoad": true
+        "autoLoad": true,
+        "autoRotate": -2 // Otomatik yavaş dönüş ekledik
     },
 
     "scenes": {
         "salon": {
             "title": "Salon",
-            "hfov": 110,
-            "pitch": -3,
-            "yaw": 117,
-            "type": "equirectangular",
             "panorama": "salon.jpg",
             "hotSpots": [
                 {
-                    "pitch": -10, // Dikey konum
-                    "yaw": 150,   // Yatay konum
+                    "pitch": -10,
+                    "yaw": 150,
                     "type": "scene",
-                    "text": "Mutfağa Git",
-                    "sceneId": "mutfak"
+                    "text": "Mutfağa Geç",
+                    "sceneId": "mutfak",
+                    "createTooltipArgs": "Mutfağa Geç",
+                    "cssClass": "custom-hotspot" // Özel stilimizi burada çağırdık
                 }
             ]
         },
 
         "mutfak": {
             "title": "Mutfak",
-            "hfov": 110,
-            "yaw": 5,
-            "type": "equirectangular",
             "panorama": "mutfak.jpg",
             "hotSpots": [
                 {
@@ -55,7 +70,31 @@ pannellum.viewer('panorama', {
                     "yaw": 110,
                     "type": "scene",
                     "text": "Salona Dön",
-                    "sceneId": "salon"
+                    "sceneId": "salon",
+                    "cssClass": "custom-hotspot"
+                },
+                {
+                    "pitch": -2,
+                    "yaw": -45,
+                    "type": "scene",
+                    "text": "Yatak Odasına Git",
+                    "sceneId": "yatak_odasi",
+                    "cssClass": "custom-hotspot"
+                }
+            ]
+        },
+
+        "yatak_odasi": {
+            "title": "Yatak Odası",
+            "panorama": "yatak_odasi.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -8,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "Mutfağa Dön",
+                    "sceneId": "mutfak",
+                    "cssClass": "custom-hotspot"
                 }
             ]
         }
