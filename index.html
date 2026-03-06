@@ -21,6 +21,10 @@
             cursor: pointer;
             /* box-shadow ve border'ı sildik, ikonun kendi gölgesi varsa daha iyi */
         }
+        .custom-hotspot:hover {
+    transform: scale(1.1); /* %10 büyütür */
+    transition: transform 0.2s ease; /* Yumuşak geçiş */
+}
         
         /* Eski ok işaretini (:after) kaldırıyoruz */
         .custom-hotspot:after {
@@ -103,6 +107,7 @@ pannellum.viewer('panorama', {
 
 </body>
 </html>
+
 
 
 
